@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+# Connor Todd PokeAPI Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Start Guide
 
-## Available Scripts
+- Clone the project to your computer locally.
+- Change into the project directory and run the command below:
 
-In the project directory, you can run:
+### `npm install`
+
+- Now that you have all project dependencies installed run the next command.
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- You should be able to interact with the site via the url http://localhost:3000
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Explanation of approach
 
-### `npm test`
+- All responses are limited to max 20 items
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- I decided to use the GraphQL API to reduce the amount of unecessary requests.
 
-### `npm run build`
+  - Using the rest API I would need to fetch the Pokemons which would give me a name and url containing an id (per pokemon)
+  - Then i would need to fetch each pokemon individually via id. This would be a big O of n2 (time complexity).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Instead the GraphQL API allowed me to fetch using just one API call and then organised the responses as I needed then. This would lead to a big O of On (time complexity).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- I can then use the API to then link up to the filters that I have created which simplifies the codebase and reduces the amount of API requests.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- I aimed to separate each function into the utils folder to allow for easier testing via unit tests, this could be improved further and if i had more time I would implement unit tests & E2E tests as well as externalise more functions into the utils folder.
 
-### `npm run eject`
+- As the data returned from the API was not always consistent I created a query responses organiser which allows me to organise the data consistently ready to inject into the table.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- I used a radio button for the filters due to lack of flexibility from an API standpoint. I would have liked to combine multiple filters but the GraphQL API does not allow for it.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- I decided not to use git to track all of my changes overtime, I really should have tracked each small change. In a real project it wouldd have all been tracked viar git using atomic commits
